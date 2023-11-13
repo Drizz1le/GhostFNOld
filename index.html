@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <link rel="stylesheet" href="stylesheet.css">
+    <meta charset="UTF-8">
+    <title>Lobby Tools - By drizz1le</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <script>type="module", src="main.js"</script>
+    <script>
+     function onClickSth() {
+          const {ipcRenderer} = require('electron');
+          ipcRenderer.send('setPinkghoul');
+     }  
+     function onClickSth1() {
+          const {ipcRenderer} = require('electron');
+          ipcRenderer.send('setPurpleskull');
+     }  
+     function onClickSth2() {
+          const {ipcRenderer} = require('electron');
+          ipcRenderer.send('setCrowns');
+     } 
+     function onClickSth3() {
+          const {ipcRenderer} = require('electron');
+          ipcRenderer.send('stopEmote');
+     } 
+     function onClickSth4() {
+          const {ipcRenderer} = require('electron');
+          ipcRenderer.send('setBanner');
+     } 
+     function onClickSth5() {
+          const {ipcRenderer} = require('electron');
+          ipcRenderer.send('readyUp');
+     } 
+     function onClickSth6() {
+          const {ipcRenderer} = require('electron');
+          ipcRenderer.send('setRene');
+     } 
+     function onClickSth11() {
+          const {ipcRenderer} = require('electron');
+          ipcRenderer.send('setGalaxy');
+     } 
+</script>
+
+</head>
+<header font-family='JetBrains Mono,monospace;' height= '100px;'>
+     Note: All cosmetics will only be shown to other players in your lobby! 
+     If you emote or change any cosmetic in your locker then the ghost equip will go away.
+</header>
+<body>
+     <button class="button-30" role="button" onclick="onClickSth()">
+          <img src=images/pinkghoul.jpg width="50" height="50"> 
+          PinkGhoul
+     </button>
+     <button class="button-30" role="button" onclick="onClickSth6()">
+          <img src=images/CheckeredRene.jpg width="50" height="50"> 
+          Checkered Renegade
+     </button>
+     <button class="button-30" role="button" onclick="onClickSth1()">
+          <img src=images/PurpleSkull.jpg width="50" height="50"> 
+          Purpleskull
+     </button>
+     <button class="button-30" role="button" onclick="onClickSth11()">
+          <img src=images/galaxy.png width="50" height="50"> 
+          [Dev Skin] Holo 
+     </button>
+     <button class="button-30" role="button" onclick="onClickSth4()">
+          <img src=images/Alpha.jpg width="50" height="50"> 
+          Set Alpha Banner
+     </button>
+     <button class="button-30" role="button" onclick="onClickSth2()">
+          <img src=images/Crown.jpg width="50" height="50"> 
+          Set Crowns (41)
+     </button>
+     <button class="button-30" role="button" onclick="onClickSth3()">
+          <img src=images/NoEmote.jpg width="50" height="50"> 
+          Stop emoting
+     </button>
+
+
+</body>
+</html>
