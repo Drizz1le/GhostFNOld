@@ -1,14 +1,52 @@
 echo off
 @echo off
+cls
+SLEEP 1
+
+set Version=1.02
+
+::Highlight Color Blue
+set col3=[94m
+color fc
+
+::Text Color White
+set col1=[97m
+::Highlight Color Red
+set col2=[31m
+color f
+
 
 
 cls
 
 :begin
-cls
 title Option Picker - Drizz1le
 
-py ascii.py
+cls
+Mode 52,27
+cls
+echo.
+echo       %col1%Fortnite Ghost Equiper By %col3%Drizzle%col1%
+echo.
+echo %BS%    ___             _           _  _        
+echo   / __\___   _ __ | |_  _ __  (_)| |_  ___ 
+echo  / _\ / _ \ | '__|| __|| '_ \ | || __|/ _ \
+echo / /  | (_) || |   | |_ | | | || || |_|  __/
+echo \/    \___/ |_|    \__||_| |_||_| \__|\___|
+echo.
+echo           %col1%[%col3%1%col1%] Login  [%col3%2%col1%] Unused
+echo      [%col3%3%col1%] Account  [%col3%4%col1%] Launch  [%col3%5%col1%] Credits
+echo           [%col3X%col1%] Exit%col2% 
+echo.
+choice /c:12345G /n /m "%BS%    %col1%    [%col3%Press a corresponding number%col1%]%col2%   %col1%Version %col3%%Version%"
+set MenuItem=%errorlevel%
+
+if "%MenuItem%"=="1" goto op1
+if "%MenuItem%"=="2" goto begin
+if "%MenuItem%"=="3" goto op4
+if "%MenuItem%"=="4" goto op3
+if "%MenuItem%"=="5" goto op5
+if "%MenuItem%"=="G" goto op2
 
 echo Select an Option:
 echo 1) Generate an auth code [ Needed for ghost equip to work ]

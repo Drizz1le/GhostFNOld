@@ -47,7 +47,15 @@ ipcMain.on('setGalaxy', () => {
 })
 
 ipcMain.on('Floss', () => {
-  client1.party.me.setEmote('EID_Floss') //makes emote stop
+  client1.party.me.setEmote('EID_Floss'); //makes emote stop
+});
+
+
+
+ipcMain.on('setFNCS', () => {
+  console.log(`[Info] If you have inquires DM @drizz1le on discord!`);
+  client1.party.me.setPickaxe('Pickaxe_ID_804_FNCSS20Male');
+  client1.party.me.setEmote('EID_IceKing');
 });
 
 ipcMain.on('setCrowns', () => {
