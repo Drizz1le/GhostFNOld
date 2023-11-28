@@ -1,3 +1,5 @@
+
+import json
 import sys, subprocess
 sys.path.insert(1, 'packages')
 
@@ -5,7 +7,6 @@ subprocess.run('cls', shell=True)
 
 import aiohttp
 import asyncio
-import json
 import webbrowser
 
 
@@ -183,12 +184,20 @@ print("""
  
 # Serializing json
 json_object = json.dumps(logs, indent=2)
+
+
+
+input1 = input("[Into] Input a name for the saved auth: ")
+authName = input1 + ".json"
+# output
+
+
  
 # Writing to sample.json
-with open("./auths/deviceAuth.json", "w") as outfile:
+with open(f"./auths/{authName}", "w") as outfile:
     outfile.write(json_object)
     
-print("[Info] Successfully saved auth!")
+print("[Info] Successfully saved auth to " + authName)
 
 
 input("Press Enter to exit")

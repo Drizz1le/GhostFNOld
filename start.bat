@@ -4,17 +4,15 @@ Mode 52,14
 cls
 SLEEP 1
 
-set Version=1.02
+set Version=1.1.3
 
 ::Highlight Color Blue
 set col3=[94m
-color fc
-
 ::Text Color White
 set col1=[97m
 ::Highlight Color Red
 set col2=[31m
-color f
+
 
 
 
@@ -27,7 +25,6 @@ cls
 cls
 echo.
 echo       %col1%Fortnite Ghost Equiper By %col3%Drizzle%col1%
-echo.
 cd ./other
 py ascii.py
 cd ../
@@ -36,7 +33,7 @@ echo         %col1%[%col3%1%col1%] Login  [%col3%2%col1%] Ghost Equipper
 echo      [%col3%3%col1%] Switch Account  [%col3%4%col1%] Launch 
 echo           [%col3%5%col1%] Credits  [%col3%X%col1%] Exit%col2% 
 echo.
-choice /c:12345XR /n /m "%BS%    %col1%    [%col3%Press a corresponding number%col1%]%col2%   %col1%Version %col3%%Version%"
+choice /c:12345XR /n /m "           [ Press a corresponding number ]   Version %Version%"
 set MenuItem=%errorlevel%
 
 if "%MenuItem%"=="1" goto op1
@@ -77,9 +74,29 @@ start /d "C:\Program Files\Epic Games\Fortnite\FortniteGame\Binaries\Win64" Fort
 goto exit 
 
 :op4
+cls
+echo.
+echo               %col1%Saved auths in %col3%./auths%col1%
+echo.
+echo ----------------------------------------------------
+echo.
+cd ./auths
+dir /b /o:-g
+cd ../
+echo.
+echo Type the %col3%full name%col1% of the auth you
+set /p "selectedAuth=want to select: "
 
-<<<<<<< HEAD
+cd ./other
+(
+echo {
+echo   "selectedAccount": "%selectedAuth%"
+echo }
+) > selectedAccount.json
+cd ../
 
+
+goto begin
 
 
 
@@ -93,7 +110,6 @@ IF EXIST "python-3.6.0-amd64.exe" (
 )
 
 =======
-:op5
 >>>>>>> e604b1045cee4a849216c8076dd74c12bfd40313
 cls
 ECHO [Info] Installing the required python packages!
