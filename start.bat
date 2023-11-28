@@ -78,6 +78,7 @@ goto exit
 
 :op4
 
+<<<<<<< HEAD
 
 
 
@@ -91,61 +92,22 @@ IF EXIST "python-3.6.0-amd64.exe" (
     del "python-3.6.0-amd64.exe"
 )
 
+=======
+:op5
+>>>>>>> e604b1045cee4a849216c8076dd74c12bfd40313
 cls
-echo [Info] Python is installed!
-ECHO [Info] Installing the required packages!
-TIMEOUT 3
+ECHO [Info] Installing the required python packages!
 
 py -3 -m pip install -U -r requirements.txt
 
 ECHO [Info] Successfully installed packages!
-goto nodejs
 
+echo [Info] Installing nodejs packages...
+npm install
+echo [Info] Done!
+pause
+goto begin
 
-:: Once done, exit the batch file -- skips executing the errorNoPython section
-
-:errorNoPython
-echo [Info] Error^: Python not installed or not added to PATH.
-:: set mypath=%cd%
-:: bitsadmin.exe /transfer "InstallPython" https://www.python.org/ftp/python/3.7.0/python-3.7.0-amd64.exe %mypath%\python-3.7.0-amd64.exe
-
-IF EXIST "python-3.7.0-amd64.exe" (
-    echo [Info] Python Installer is already installed, install and/or add Python to PATH
-) ELSE (
-    echo [Info] Installing Python Installer now, this will take a minute or 2.
-    powershell -Command "(New-Object Net.WebClient).DownloadFile('https://www.python.org/ftp/python/3.6.0/python-3.6.0-amd64.exe', 'python-3.7.0-amd64.exe')"
-    powershell -Command "Invoke-WebRequest https://www.python.org/ftp/python/3.7.0/python-3.7.0-amd64.exe -OutFile python-3.7.0-amd64.exe"   
-    echo [Info] Python Installer is now installed, install and/or add Python to PATH.
-    goto nodejs
-)
-
-:nodejs
-set NULL_VAL=null
-set NODE_VER=%NULL_VAL%
-set NODE_EXEC=node-v10.15.3-x86.msi
-
-node -v >.tmp_nodever
-set /p NODE_VER=<.tmp_nodever
-del .tmp_nodever
-
-IF "%NODE_VER%"=="%NULL_VAL%" (
-	echo.
-	echo [Info] Node.js is not installed! Please press a key to download and install it from the website that will open.
-	PAUSE
-	start "" https://nodejs.org/en/download
-	echo.
-	echo.
-	echo [Info] After you have installed Node.js, restart this command to make sure it is installed.
-	PAUSE
-	EXIT
-) ELSE (
-	echo [Info] A version of Node.js ^(%NODE_VER%^) is installed.
-	echo [Info] Installing nodejs packages...
-	npm install
-	echo [Info] Done!
-	pause
-	goto begin
-)
 
 
 
