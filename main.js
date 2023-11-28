@@ -5,6 +5,11 @@ const { Client } = require('fnbr');
 
 
 console.clear();
+const selectedAuth = require("./selectedAccount.json");
+//const selectedAuth = JSON.parse(readFile('./selectedAccount.json'));
+console.log("[Info] Selected " + selectedAuth.selectedAccount);
+
+const selectedAccount = "./auths/" + selectedAuth.selectedAccount;
 
 
 
@@ -12,7 +17,7 @@ console.clear();
 (async () => {
   let auth1;
   try {
-    auth1 = { deviceAuth: JSON.parse(await readFile('./auths/deviceAuth.json')), killOtherTokens: false };
+    auth1 = { deviceAuth: JSON.parse(await readFile(selectedAccount)), killOtherTokens: false };
   } catch (e) {
     auth1 = { authorizationCode: async () => Client.consoleQuestion('[Info] Make an Auth before using this!'), killOtherTokens: false };
   }
@@ -53,7 +58,7 @@ ipcMain.on('Floss', () => {
 
 
 ipcMain.on('setFNCS', () => {
-  console.log(`[Info] If you have inquires DM @drizz1le on discord!`);
+  console.log(`[Info] IDK`);
   client1.party.me.setPickaxe('Pickaxe_ID_804_FNCSS20Male');
   client1.party.me.setEmote('EID_IceKing');
 });

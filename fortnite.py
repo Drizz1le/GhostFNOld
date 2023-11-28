@@ -188,11 +188,12 @@ json_object = json.dumps(logs, indent=2)
 with open("./auths/deviceAuth.json", "w") as outfile:
     outfile.write(json_object)
     
-print("[Info] Successfully saved auths in ./auths/deviceAuth.json")
-print("[Info] Now run re-run start.bat and choose ghost equip!")
+print("[Info] Successfully saved auth!")
 
 
 input("Press Enter to exit")
+
+exit()
 
 
 

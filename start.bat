@@ -1,5 +1,6 @@
 echo off
 @echo off
+Mode 52,14
 cls
 SLEEP 1
 
@@ -23,47 +24,35 @@ cls
 title Option Picker - Drizz1le
 
 cls
-Mode 52,27
 cls
 echo.
 echo       %col1%Fortnite Ghost Equiper By %col3%Drizzle%col1%
 echo.
-echo %BS%    ___             _           _  _        
-echo   / __\___   _ __ | |_  _ __  (_)| |_  ___ 
-echo  / _\ / _ \ | '__|| __|| '_ \ | || __|/ _ \
-echo / /  | (_) || |   | |_ | | | || || |_|  __/
-echo \/    \___/ |_|    \__||_| |_||_| \__|\___|
+cd ./other
+py ascii.py
+cd ../
 echo.
-echo           %col1%[%col3%1%col1%] Login  [%col3%2%col1%] Unused
-echo      [%col3%3%col1%] Account  [%col3%4%col1%] Launch  [%col3%5%col1%] Credits
-echo           [%col3X%col1%] Exit%col2% 
+echo         %col1%[%col3%1%col1%] Login  [%col3%2%col1%] Ghost Equipper
+echo      [%col3%3%col1%] Switch Account  [%col3%4%col1%] Launch 
+echo           [%col3%5%col1%] Credits  [%col3%X%col1%] Exit%col2% 
 echo.
-choice /c:12345G /n /m "%BS%    %col1%    [%col3%Press a corresponding number%col1%]%col2%   %col1%Version %col3%%Version%"
+choice /c:12345XR /n /m "%BS%    %col1%    [%col3%Press a corresponding number%col1%]%col2%   %col1%Version %col3%%Version%"
 set MenuItem=%errorlevel%
 
 if "%MenuItem%"=="1" goto op1
-if "%MenuItem%"=="2" goto begin
+if "%MenuItem%"=="2" goto op2
 if "%MenuItem%"=="3" goto op4
 if "%MenuItem%"=="4" goto op3
 if "%MenuItem%"=="5" goto op5
-if "%MenuItem%"=="G" goto op2
-
-echo Select an Option:
-echo 1) Generate an auth code [ Needed for ghost equip to work ]
-echo 2) Start ghost equip program
-echo 3) Generate an launch code [ Windows 10 only ]
-echo 4) Account page launch
-echo 5) Install Python, NodeJS and packages [ Needed for everything to work ]
-echo 6) Credits
-set /p op=Type option:
-if "%op%"=="1" goto op1
-if "%op%"=="2" goto op2
-if "%op%"=="3" goto op3
-if "%op%"=="4" goto op4
-if "%op%"=="5" goto op5
+if "%MenuItem%"=="X" goto exit
+if "%MenuItem%"=="R" goto reload
 
 echo Please pick an option:
 goto begin
+
+:reload
+start.bat
+goto exit
 
 
 :op1
@@ -88,10 +77,10 @@ start /d "C:\Program Files\Epic Games\Fortnite\FortniteGame\Binaries\Win64" Fort
 goto exit 
 
 :op4
-set /p exchangeCode=Type Enter your exchange code:
-start "" https://www.epicgames.com/id/exchange?exchangeCode=%exchangeCode%
 
-:op5
+
+
+
 
 :: Check for Python Installation
 py -3 --version 2>NUL
@@ -160,7 +149,7 @@ IF "%NODE_VER%"=="%NULL_VAL%" (
 
 
 
-:op6
+:op5
 title Credits - Drizz1le
 cls
 
