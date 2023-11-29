@@ -187,14 +187,14 @@ json_object = json.dumps(logs, indent=2)
 
 
 
-input1 = input("[Into] Input a name for the saved auth: ")
+input1 = input("[Question] Auth name: ")
 authName = input1 + ".json"
 # output
 
 
  
 # Writing to sample.json
-with open(f"./auths/{authName}", "w") as outfile:
+with open(f"../auths/{authName}", "w") as outfile:
     outfile.write(json_object)
     
 print("[Info] Successfully saved auth to " + authName)

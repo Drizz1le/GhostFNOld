@@ -1,10 +1,11 @@
-echo off
 @echo off
+
+
 Mode 52,14
 cls
 SLEEP 1
 
-set Version=1.1.3
+set Version=1.02
 
 ::Highlight Color Blue
 set col3=[94m
@@ -13,6 +14,9 @@ set col1=[97m
 ::Highlight Color Red
 set col2=[31m
 
+::Highlight Color Green
+set col4=[2m
+
 
 
 
@@ -20,7 +24,7 @@ cls
 
 :begin
 title Option Picker - Drizz1le
-
+Mode 52,14
 cls
 cls
 echo.
@@ -31,7 +35,7 @@ cd ../
 echo.
 echo         %col1%[%col3%1%col1%] Login  [%col3%2%col1%] Ghost Equipper
 echo      [%col3%3%col1%] Switch Account  [%col3%4%col1%] Launch 
-echo           [%col3%5%col1%] Credits  [%col3%X%col1%] Exit%col2% 
+echo           [%col3%5%col1%] Settings  [%col3%X%col1%] Exit%col2% 
 echo.
 choice /c:12345XR /n /m "           [ Press a corresponding number ]   Version %Version%"
 set MenuItem=%errorlevel%
@@ -54,13 +58,17 @@ goto exit
 
 :op1
 title Auth Generator - Drizz1le
+cd ./other
 py fortnite.py
+cd ../
 goto exit
 
 :op2
 title Ghost Equiper - Drizz1le
 cls
+cd ./other
 npm start
+cd ../
 cls
 goto begin
 
@@ -71,7 +79,7 @@ set /p account_id=Type Enter your account ID:
 
 
 start /d "C:\Program Files\Epic Games\Fortnite\FortniteGame\Binaries\Win64" FortniteLauncher.exe -AUTH_LOGIN=unused -AUTH_PASSWORD=%exchangeCode% -AUTH_TYPE=exchangecode -epicapp=Fortnite -epicenv=Prod -EpicPortal -epicuserid=%account_id%
-goto exit 
+goto begin
 
 :op4
 cls
@@ -94,48 +102,67 @@ echo   "selectedAccount": "%selectedAuth%"
 echo }
 ) > selectedAccount.json
 cd ../
-
-
 goto begin
 
-
-
-:: Check for Python Installation
-py -3 --version 2>NUL
-if errorlevel 1 goto errorNoPython
-
-:: Reaching here means Python is installed.
-IF EXIST "python-3.6.0-amd64.exe" (
-    del "python-3.6.0-amd64.exe"
-)
-
-=======
->>>>>>> e604b1045cee4a849216c8076dd74c12bfd40313
-cls
-ECHO [Info] Installing the required python packages!
-
-py -3 -m pip install -U -r requirements.txt
-
-ECHO [Info] Successfully installed packages!
-
-echo [Info] Installing nodejs packages...
-npm install
-echo [Info] Done!
-pause
 goto begin
-
-
 
 
 :op5
-title Credits - Drizz1le
 cls
+cd ./other
+set /p crownWins=<crowns.txt
+cd ../
 
-echo Made by @drizz1le on discord. 
-echo ----------------------------
+set UseGUI=%col3%True
+echo.
+echo                                          %col2%Page 1/1
+echo  %col1%[%col2%1%col1%] Crown wins [ %col3%%crownWins%%col1% ]
+echo  [90mChange the number of crown wins you have
+echo.
+echo  %col1%[%col2%2%col1%] Re-install packages
+echo  [90mThis will re-install all packages required to work
+echo.
+echo  %col1%[%col2%3%col1%] Use separate GUI %UseGUI%
+echo  [90mUses a GUI vs Terminal for ghost equipping
+echo.
+echo  %col1%[%col2%4%col1%] Credits
+echo  [90mSee the credits for this program%col1%
+echo.
+choice /c:1234X /n /m "%BS%                [X] Exit"
 
-pause
+set MenuItem=%errorlevel%
+
+if "%MenuItem%"=="1" goto changeCrowns
+if "%MenuItem%"=="2" goto reinstall
+if "%MenuItem%"=="3" goto op4
+if "%MenuItem%"=="4" goto op3
+if "%MenuItem%"=="X" goto begin
+
 goto begin
+
+:reinstall
+echo [Info] Installing required python packages
+pip install -r requirements.txt
+echo [Info] Installing required nodejs packages
+cd ./other
+npm i
+cd ../
+pause
+goto op5
+
+:changeCrowns
+echo [Note] Crown wins with a value of 0 makes everyones levels disappear
+set /p "crowns=[Info] Please enter a number of crown wins: "
+cd ./other
+(
+echo {
+echo     "numOfCrowns": %crowns%
+echo }
+) > settings.json
+
+echo %crowns% > crowns.txt
+cd ../
+goto op5
 
 :exit
 @exit

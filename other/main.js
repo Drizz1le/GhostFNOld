@@ -9,7 +9,7 @@ const selectedAuth = require("./selectedAccount.json");
 //const selectedAuth = JSON.parse(readFile('./selectedAccount.json'));
 console.log("[Info] Selected " + selectedAuth.selectedAccount);
 
-const selectedAccount = "./auths/" + selectedAuth.selectedAccount;
+const selectedAccount = "../auths/" + selectedAuth.selectedAccount;
 
 
 
