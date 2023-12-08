@@ -116,7 +116,7 @@ cd ../
 set UseGUI=%col3%True
 echo.
 echo                                          %col2%Page 1/1
-echo  %col1%[%col2%1%col1%] Crown wins [ %col3%%crownWins%%col1% ]
+echo  %col1%[%col2%1%col1%] Crown wins [ %col3%%crownWins%%col1%]
 echo  [90mChange the number of crown wins you have
 echo.
 echo  %col1%[%col2%2%col1%] Re-install packages
@@ -125,8 +125,8 @@ echo.
 echo  %col1%[%col2%3%col1%] Use separate GUI %UseGUI%
 echo  [90mUses a GUI vs Terminal for ghost equipping
 echo.
-echo  %col1%[%col2%4%col1%] Credits
-echo  [90mSee the credits for this program%col1%
+echo  %col1%[%col2%4%col1%] Create desktop shortcut
+echo  [90mPuts a shortcut to this program on the desktop%col1%
 echo.
 choice /c:1234X /n /m "%BS%                [X] Exit"
 
@@ -135,20 +135,36 @@ set MenuItem=%errorlevel%
 if "%MenuItem%"=="1" goto changeCrowns
 if "%MenuItem%"=="2" goto reinstall
 if "%MenuItem%"=="3" goto op4
-if "%MenuItem%"=="4" goto op3
+if "%MenuItem%"=="4" goto desktop
 if "%MenuItem%"=="X" goto begin
 
 goto begin
 
 :reinstall
+cls
+echo [Info] Please wait for installation to finish before closing
 echo [Info] Installing required python packages
 pip install -r requirements.txt
 echo [Info] Installing required nodejs packages
 cd ./other
 npm i
+npm install fnbrjs/fnbr.js#main
 cd ../
+goto begin
 pause
 goto op5
+
+:desktop
+set mypath=%cd%
+echo [Info] Path: %mypath%
+powershell "$s=(New-Object -COM WScript.Shell).CreateShortcut('%userprofile%\Desktop\Ghost Equipper.lnk');$s.TargetPath='%mypath%\start.bat';$s.IconLocation='%mypath%\other\images\icon.ico';$s.WorkingDirectory='%mypath%';$s.Save()"
+
+echo [Info] Successfully made a desktop shortcut!
+pause
+goto op5
+
+
+
 
 :changeCrowns
 echo [Note] Crown wins with a value of 0 makes everyones levels disappear
@@ -159,6 +175,9 @@ echo {
 echo     "numOfCrowns": %crowns%
 echo }
 ) > settings.json
+
+powershell (Add-Type '[DllImport(\"user32.dll\")]^public static extern int SendMessage(int hWnd, int hMsg, int wParam, int lParam);' -Name a -Pas)::SendMessage(-1,0x0112,0xF170,2)
+set "err=Success."
 
 echo %crowns% > crowns.txt
 cd ../

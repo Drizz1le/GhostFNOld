@@ -3,13 +3,13 @@ const { readFile, writeFile } = require('fs').promises;
 const axios = require('axios').default;
 const { Client } = require('fnbr');
 
-
 console.clear();
 const selectedAuth = require("./selectedAccount.json");
 //const selectedAuth = JSON.parse(readFile('./selectedAccount.json'));
 console.log("[Info] Selected " + selectedAuth.selectedAccount);
 
 const selectedAccount = "../auths/" + selectedAuth.selectedAccount;
+
 
 
 
@@ -51,15 +51,31 @@ ipcMain.on('setGalaxy', () => {
   client1.party.me.setOutfit('CID_VIP_Athena_Commando_M_GalileoGondola_SG'); //Indgo Kuno
 })
 
+ipcMain.on('setBomber', () => {
+  client1.party.me.setOutfit('CID_619_Athena_Commando_F_TechLlama'); //Brillant bomber
+})
+
 ipcMain.on('Floss', () => {
   client1.party.me.setEmote('EID_Floss'); //makes emote stop
+});
+
+ipcMain.on('setGalaxyBackpack', () => {
+  client1.party.me.setBackpack('BID_138_Celestial');
+});
+
+ipcMain.on('setPurplePortal', () => {
+  client1.party.me.setBackpack('BID_105_GhostPortal', [{'particle': '1'}]);
 });
 
 
 
 ipcMain.on('setFNCS', () => {
-  console.log(`[Info] IDK`);
   client1.party.me.setPickaxe('Pickaxe_ID_804_FNCSS20Male');
+  client1.party.me.setEmote('EID_IceKing');
+});
+
+ipcMain.on('setRaiders', () => {
+  client1.party.me.setPickaxe('Pickaxe_Lockjaw');
   client1.party.me.setEmote('EID_IceKing');
 });
 
@@ -76,23 +92,21 @@ ipcMain.on('setBanner', () => {
   client1.party.me.setBanner('OT9Banner', 'DefaultColor22');
 });
 
-
-
-
 ipcMain.on('setRene', () => { 
   client1.party.me.setOutfit('CID_028_Athena_Commando_F', [{ channel: 'Material', variant: 'Mat2' }]);
 });
 
-
-
-
+function supremebot(){
+  alert("Hii")
+  }
+  
 
 
 //Login to client
   await client1.login();
   //client1.setStatus('Peter is short', 'online')
   console.log(`[Info] Logged in as ${client1.user.displayName} successfully!`);
-  console.log(`[Info] If you have inquires DM @drizz1le on discord!`);
+  //console.log(`[Info] If you have inquires DM @drizz1le on discord!`);
 })();
 
 const { ipcMain, app, BrowserWindow } = require('electron')
@@ -100,7 +114,7 @@ const { ipcMain, app, BrowserWindow } = require('electron')
 app.whenReady().then(() => {
   const win = new BrowserWindow({
     width: 550,
-    height: 400,
+    height: 420,
     icon: __dirname + '/images/icon.jpg',
     webPreferences: {
       nodeIntegration: true,
@@ -108,5 +122,7 @@ app.whenReady().then(() => {
   }
   });
   win.setMenuBarVisibility(false)
-  win.loadFile('index.html');
-})
+
+    win.loadFile('index.html');
+    }
+  )
