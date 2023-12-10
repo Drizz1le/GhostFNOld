@@ -82,7 +82,7 @@ ipcMain.on('setRaiders', () => {
 });
 
 ipcMain.on('setCrowns', () => {
-  client1.party.me.setCosmeticStats(41, 71) // # of crowns
+  client1.party.me.setCosmeticStats(41, 17) // # of crowns
   client1.party.me.setEmote('EID_Coronet') // show crown wins emote //Negitive or invalid values make everyones levels disappear while the ghost equip is active. Any level set here applies to everyone in the party
 });
 

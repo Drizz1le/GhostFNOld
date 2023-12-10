@@ -61,7 +61,7 @@ title Auth Generator - Drizz1le
 cd ./other
 py fortnite.py
 cd ../
-goto exit
+goto begin
 
 :op2
 title Ghost Equiper - Drizz1le
@@ -143,8 +143,8 @@ goto begin
 :reinstall
 cls
 echo [Info] Please wait for installation to finish before closing
-echo [Info] Installing required python packages
-pip install -r requirements.txt
+::echo [Info] Installing required python packages
+::pip install -r requirements.txt
 echo [Info] Installing required nodejs packages
 cd ./other
 npm i
