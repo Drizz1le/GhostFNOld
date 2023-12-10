@@ -1,10 +1,12 @@
-
-import json
+import os
 import sys, subprocess
-sys.path.insert(1, 'packages')
+
+path = os.path.abspath("py")
+sys.path.append(path)
 
 subprocess.run('cls', shell=True)
 
+import json
 import aiohttp
 import asyncio
 import webbrowser

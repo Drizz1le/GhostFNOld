@@ -64,7 +64,9 @@ ipcMain.on('setGalaxyBackpack', () => {
 });
 
 ipcMain.on('setPurplePortal', () => {
-  client1.party.me.setBackpack('BID_105_GhostPortal', [{'particle': '1'}]);
+  //client1.party.me.setBackpack('BID_105_GhostPortal', [{ channel: 'Particle', variant: 'Mat1'}]);
+  client1.party.me.setBackpack('BID_105_GhostPortal');
+  console.log(client1.party.me.backpack)
 });
 
 
@@ -80,7 +82,7 @@ ipcMain.on('setRaiders', () => {
 });
 
 ipcMain.on('setCrowns', () => {
-  client1.party.me.setCrowns(41) // # of crowns
+  client1.party.me.setCosmeticStats(41, 71) // # of crowns
   client1.party.me.setEmote('EID_Coronet') // show crown wins emote //Negitive or invalid values make everyones levels disappear while the ghost equip is active. Any level set here applies to everyone in the party
 });
 
@@ -96,9 +98,10 @@ ipcMain.on('setRene', () => {
   client1.party.me.setOutfit('CID_028_Athena_Commando_F', [{ channel: 'Material', variant: 'Mat2' }]);
 });
 
-function supremebot(){
-  alert("Hii")
-  }
+//client1.on('party:member:emote:updated', (value) => {console.log(value)});
+
+
+
   
 
 
