@@ -1,6 +1,8 @@
-# **Fortnite Ghost Equipper**
+# **GhostFN**
 
 **By Drizzle**
+## What is it?
+GhostFN is a program I have been developing that is able to change your skin in lobby to any skin ( or cosmetic ) that you want.
 
 ## Installation
 
