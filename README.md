@@ -30,6 +30,6 @@ GhostFN is a program I have been developing that is able to change your skin in 
 
 ## Changing crown wins
 
-* To change the number of crown wins that shows up open settings.json with nodepad and edit "numOfCrowns" to any number you want. 
+* To change the number of crown wins that shows up, select the settings option and then select change number of crown wins. Then your good
 
 * **Note: A negtive number of crown wins will make everyones levels disappear in the party and will not display that number of wins. Im pretty sure the max number of wins that will show is 9,999**
