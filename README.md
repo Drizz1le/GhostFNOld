@@ -2,7 +2,7 @@
 
 **By Drizzle**
 ## What is it?
-GhostFN is a program I have been developing that is able to change your skin in lobby to any skin ( or cosmetic ) that you want.
+GhostFN is a program I have been developing that is able to change your skin in lobby to any skin ( or cosmetic ) that you want. This is basicly "ghost equipping" that you can do with discord bots.
 
 ## Installation
 
