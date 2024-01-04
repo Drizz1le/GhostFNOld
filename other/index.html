@@ -1,117 +1,229 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-     <link rel="stylesheet" href="stylesheet.css">
     <meta charset="UTF-8">
-    <title>Lobby Tools - By drizz1le</title>
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-    <script> src="./main.js"</script>
-    <script>
-     function onClickSth() {
-          const {ipcRenderer} = require('electron');
-          ipcRenderer.send('setPinkghoul');
-     }  
-     function onClickSth1() {
-          const {ipcRenderer} = require('electron');
-          ipcRenderer.send('setPurpleskull');
-     }  
-     function onClickSth2() {
-          const {ipcRenderer} = require('electron');
-          ipcRenderer.send('setCrowns');
-     } 
-     function onClickSth3() {
-          const {ipcRenderer} = require('electron');
-          ipcRenderer.send('stopEmote');
-     } 
-     function onClickSth4() {
-          const {ipcRenderer} = require('electron');
-          ipcRenderer.send('setBanner');
-     } 
-     function onClickSth5() {
-          const {ipcRenderer} = require('electron');
-          ipcRenderer.send('readyUp');
-     } 
-     function onClickSth6() {
-          const {ipcRenderer} = require('electron');
-          ipcRenderer.send('setRene');
-     } 
-     function onClickSth11() {
-          const {ipcRenderer} = require('electron');
-          ipcRenderer.send('setGalaxy');
-     } 
-     function onClickSth14() {
-          const {ipcRenderer} = require('electron');
-          ipcRenderer.send('setBomber');
-     } 
-     function onClickSth16() {
-          const {ipcRenderer} = require('electron');
-          ipcRenderer.send('setGalaxyBackpack');
-     } 
-     function onClickSth17() {
-          const {ipcRenderer} = require('electron');
-          ipcRenderer.send('setPurplePortal');
-     } 
-     function onClickSth18() {
-          const {ipcRenderer} = require('electron');
-          ipcRenderer.send('setRaiders');
-     } 
-     function onClickSth19() {
-          const {ipcRenderer} = require('electron');
-          ipcRenderer.send('setFNCS');
-     }
-</script>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Lobby Tools - By drizz1e</title>
+    <style>
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: url('images/background.jpg') center/cover fixed no-repeat;
+            position: relative;
+        }
 
+        header {
+            background-color: rgb(21, 23, 31);
+            color: #ebebeb;
+            text-align: left;
+            padding: 5px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        header div, header a, header button {
+            margin-right: 10px;
+        }
+
+        header a {
+            color: #ebebeb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        header button {
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .header-links {
+            display: flex;
+            align-items: center;
+        }
+
+        main {
+            margin-top: 60px; /* Adjusted for header height */
+            padding: 20px; /* Added padding to main content */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px;
+            display: inline-flex;
+            padding-left: 16px;
+            padding-right: 16px;
+            align-items: center;
+            appearance: none;
+            border-width: 0;
+            justify-content: center;
+            font-size: 14px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            border-radius: 4px;
+            box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+            box-sizing: border-box;
+            color: #36395A;
+            cursor: pointer;
+            font-family: "JetBrains Mono", monospace;
+            height: 56px;
+            justify-content: center;
+            line-height: 1;
+            list-style: none;
+            overflow: hidden;
+            position: relative;
+            text-align: left;
+            text-decoration: none;
+            transition: box-shadow .15s, transform .15s;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            will-change: box-shadow, transform;
+            font-size: 20px;
+        }
+
+        button img {
+            margin-right: 10px;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
 </head>
-<header font-family='JetBrains Mono,monospace;' height= '100px;'>
-     Note: All cosmetics will only be shown to other players in your lobby! 
-     If you emote or change any cosmetic in your locker then the ghost equip will go away.
-</header>
 <body>
-     <button class="button-30" role="button" onclick="onClickSth()">
-          <img src=images/pinkghoul.jpg width="50" height="50"> 
+    <header>
+        <div>
+            <img src="images/icon.png" alt="Icon" width="50" height="50">
+        </div>
+        <div class="header-links">
+            <a href="page1.html">Page 1</a>
+            <a href="page2.html">Page 2</a>
+            <button onclick="openPopup()">Credits</button>
+        </div>
+        <div class="popup" id="popup">
+            <span class="popup-close" onclick="closePopup()">X</span>
+            <p>Credits: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+    </header>
+
+    <script>
+        async function onClickSth(action) {
+            try {
+                await fetch(`http://localhost:3000/${action}`, { method: 'POST' });
+            } catch (error) {
+                console.error('Error communicating with Electron:', error);
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+<body>
+    <button class="button" role="button" onclick="onClickSth('setPinkghoul')">
+          <img src="images/pinkghoul.jpg" width="50" height="50">
           Pink Ghoul
      </button>
-     <button class="button-30" role="button" onclick="onClickSth6()">
-          <img src=images/CheckeredRene.jpg width="50" height="50"> 
+     
+     <button class="button" role="button" onclick="onClickSth('setRene')">
+          <img src="images/CheckeredRene.jpg" width="50" height="50">
           Checkered Renegade
      </button>
-     <button class="button-30" role="button" onclick="onClickSth1()">
-          <img src=images/PurpleSkull.jpg width="50" height="50"> 
-          Purple skull
+     
+     <button class="button" role="button" onclick="onClickSth('setPurpleskull')">
+          <img src="images/PurpleSkull.jpg" width="50" height="50">
+          Purple Skull
      </button>
-     <button class="button-30" role="button" onclick="onClickSth11()">
-          <img src=images/galaxy.png width="50" height="50"> 
-          [Dev Skin] Holo 
+     
+     <button class="button" role="button" onclick="onClickSth('setGalaxy')">
+          <img src="images/galaxy.png" width="50" height="50">
+          [Dev Skin] Holo
      </button>
-     <button class="button-30" role="button" onclick="onClickSth14()">
-          <img src=images/brilliantBomber.png width="50" height="50"> 
-          [Unreleased] Brilliant Bomber 
+     
+     <button class="button" role="button" onclick="onClickSth('setBomber')">
+          <img src="images/brilliantBomber.png" width="50" height="50">
+          [Unreleased] Brilliant Bomber
      </button>
-     <button class="button-30" role="button" onclick="onClickSth16()">
-          <img src=images/galaxydisc.png width="50" height="50"> 
+     
+     <button class="button" role="button" onclick="onClickSth('setGalaxyBackpack')">
+          <img src="images/galaxydisc.png" width="50" height="50">
           Galaxy Disc
      </button>
-     <button class="button-30" role="button" onclick="onClickSth17()">
-          <img src=images/purpleghost.png width="50" height="50"> 
+     
+     <button class="button" role="button" onclick="onClickSth('setPurplePortal')">
+          <img src="images/purpleghost.png" width="50" height="50">
           Purple Ghost Portal
      </button>
-     <button class="button-30" role="button" onclick="onClickSth19()">
-          <img src=images/fncs.png width="50" height="50"> 
+     
+     <button class="button" role="button" onclick="onClickSth('setFNCS')">
+          <img src="images/fncs.png" width="50" height="50">
           FNCS Pickaxe
      </button>
-     <button class="button-30" role="button" onclick="onClickSth18()">
-          <img src=images/raiders.png width="50" height="50"> 
+     
+     <button class="button" role="button" onclick="onClickSth('setRaiders')">
+          <img src="images/raiders.png" width="50" height="50">
           Raider's Revenge
      </button>
-     <button class="button-30" role="button" onclick="onClickSth4()">
-          <img src=images/Alpha.jpg width="50" height="50"> 
+     
+     <button class="button" role="button" onclick="onClickSth('setBanner')">
+          <img src="images/Alpha.jpg" width="50" height="50">
           Alpha Banner
      </button>
-     <button class="button-30" role="button" onclick="onClickSth2()">
-          <img src=images/Crown.jpg width="50" height="50"> 
+     
+     <button class="button" role="button" onclick="onClickSth('setCrowns')">
+          <img src="images/Crown.jpg" width="50" height="50">
           Set Crowns
      </button>
+    <!-- Add other buttons with updated onclick events -->
 
 
+
+    <script>
+          
+        function openPopup() {
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        async function onClickSth(action) {
+            try {
+                await fetch(`http://localhost:3000/${action}`, { method: 'POST' });
+            } catch (error) {
+                console.error('Error communicating with Electron:', error);
+            }
+        }
+    </script>
 </body>
 </html>
